@@ -4,7 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
 const cloudinary = require("cloudinary");
 
-// Create CustomOrder -- Admin
+// Create CustomOrder 
 exports.createCustomOrder = catchAsyncErrors(async (req, res, next) => {
   let images = [];
 
@@ -335,6 +335,25 @@ exports.getPendingCustomOrders = catchAsyncErrors(async (req, res, next) => {
     customOrders,
   });
 });
+
+
+// Get Pending custom orders for user 
+
+exports.getCustomerPendingCustomOrders = catchAsyncErrors(async (req, res, next) => {
+  const pendingStatus = "pending";
+
+  const userId = req.user.id;
+
+  const customOrders = await CustomOrder.find({ user: userId, customerStatus: pendingStatus });
+
+  res.status(200).json({
+    success: true,
+    customOrders,
+  });
+});
+
+
+
 exports.getConfirmedCustomOrders = catchAsyncErrors(async (req, res, next) => {
   const confirmStatus = "confirmed"; // Define the pending status value
 
@@ -393,7 +412,7 @@ exports.getAssignedCustomOrders = catchAsyncErrors(async (req, res, next) => {
 
 // Get Assigned Custom Orders --Team
 exports.getCustomOrdersAssignedToUser = catchAsyncErrors(async (req, res, next) => {
-  // console.log("Request received from frontend:", req.body); // Add this log statement
+  console.log("Request received from frontend:", req.body); // Add this log statement
 
   
     const userId = req.user.id; // Assuming you have an authenticated user object with an 'id' property

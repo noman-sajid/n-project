@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+.main-software-comp-div{
+    font-family: 'Karla', sans-serif;
+}
+.software-component{
+    padding: 50px 100px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+    
+}
+.main-software-heading{
+    font-size: 40px;
+    font-weight: 400;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+.software-content{
+    width: 50%;
+}
+.software-content p{
+    font-size: 22px;
+}
+.s-component-image{
+    width: 50%;
+}
+.s-component-image img{
+    width: 300px;
+    height:auto;
+}
+@media (max-width:992px) {
+    .software-component{
+        gap: 40px;
+    }
+    .software-content p{
+        font-size: 18px;
+    }
+    .main-software-heading{
+        font-size: 30px;
+    }
+}
+@media (max-width:768px) {
+    .software-component{
+        flex-direction: column;
+        gap: 0px;
+        padding: 30px 20px;
+    }
+    .software-content{
+        width: 100%;
+        order: 2;
+    }
+    .s-component-image{
+        width: 100%;
+        order: 1;
+        margin-bottom: 30px;
+    }
+
+}
+@media (max-width:600px){
+    .s-component-image img{
+        width: 250px;
+    }
+}

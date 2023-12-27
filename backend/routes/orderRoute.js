@@ -6,6 +6,7 @@ const {
   getAllOrders,
   updateOrder,
   deleteOrder,
+  updateOrderToPaid
 } = require("../controllers/orderController");
 const router = express.Router();
 
@@ -17,9 +18,12 @@ router.route("/order/:id").get(isAuthenticatedUser, getSingleOrder);
 
 router.route("/orders/me").get(isAuthenticatedUser, myOrders);
 
+router.route('/:id/pay').put(isAuthenticatedUser, updateOrderToPaid)
+
 router
   .route("/admin/orders")
   .get(isAuthenticatedUser, authorizeRoles("admin", "team"), getAllOrders);
+  
 
 router
   .route("/admin/order/:id")

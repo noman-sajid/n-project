@@ -63,6 +63,9 @@ import {
     UPDATE_PROGRESS_SUCCESS,
     UPDATE_PROGRESS_FAIL,
     UPDATE_PROGRESS_RESET,
+    C_PENDING_TO_CUSTOM_ORDER_REQUEST,
+    C_PENDING_TO_CUSTOM_ORDER_SUCCESS,
+    C_PENDING_TO_CUSTOM_ORDER_FAIL ,
 
   } from "../constants/customOrderConstants";
   
@@ -656,4 +659,66 @@ export const declineCustomOrderReducer = (state = {}, action) => {
         return state;
     }
   };
+
+
+  // Reducer for customer pending custom orders
+// export const customerPendingCustomOrdersReducer = function (state = { customOrders: [] }, action) {
+//   switch (action.type) {
+//     case CUSTOMER_PENDING_CUSTOM_ORDERS_REQUEST:
+//       return {
+//         loading: true,
+//       };
+
+//     case CUSTOMER_PENDING_CUSTOM_ORDERS_SUCCESS:
+//       return {
+//         loading: false,
+//         customOrders: action.payload,
+//       };
+
+//     case CUSTOMER_PENDING_CUSTOM_ORDERS_FAIL:
+//       return {
+//         loading: false,
+//         error: action.payload,
+//       };
+
+//     case CLEAR_ERRORS:
+//       return {
+//         ...state,
+//         error: null,
+//       };
+
+//     default:
+//       return state;
+//   }
+// };
   
+export const myPendingCustomOrdersReducer = function (state = { customOrders: [] }, action) {
+  switch (action.type) {
+    case C_PENDING_TO_CUSTOM_ORDER_REQUEST:
+      return {
+        loading: true,
+      };
+
+    case C_PENDING_TO_CUSTOM_ORDER_SUCCESS:
+      console.log('Reducer - Custom orders:', action.payload);
+      return {
+        loading: false,
+        customOrders: action.payload, 
+      };
+
+    case C_PENDING_TO_CUSTOM_ORDER_FAIL :
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};

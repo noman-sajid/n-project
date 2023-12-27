@@ -24,8 +24,7 @@ function Servicebox() {
   };
   return (
     <Fragment>
-        <div className="container-fluid m-0 pt-0 p-3 main-wrapper">
-        <h1 className="service-heading">Services We Provide</h1>
+        <div className="container-fluid m-0 pt-0 p-3 main-wrapper ">
         <div className='service-box'>
           <div className='service-card'>
            <div className='card-img'>

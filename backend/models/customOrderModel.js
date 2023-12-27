@@ -12,7 +12,14 @@ const customOrderSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "Please Enter Your Email"],
-      validate: [mongooseValidators.isEmail, "Please Enter a valid Email"],
+      validate: {
+        validator: function (email) {
+          // Use a regular expression to validate the email format
+          const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+          return emailRegex.test(email);
+        },
+        message: "Please Enter a valid Email",
+      },
     },
     phone: {
       type: String,
@@ -34,8 +41,16 @@ const customOrderSchema = new mongoose.Schema(
       enum: ['pending', 'confirmed', 'assigned', 'declined', 'completed'],
       default: 'pending',
     },
+    
+    customerStatus: {
+      type: String,
+      enum: ['pending', 'completed'],
+      default: 'pending',
+    },
+
     assignedTo: {
       type: mongoose.Schema.Types.ObjectId,
+      
       ref: 'User',
       
     },

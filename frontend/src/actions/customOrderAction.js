@@ -57,7 +57,9 @@ import {
   UPDATE_PROGRESS_REQUEST,
   UPDATE_PROGRESS_SUCCESS,
   UPDATE_PROGRESS_FAIL ,  
-
+  C_PENDING_TO_CUSTOM_ORDER_REQUEST,
+  C_PENDING_TO_CUSTOM_ORDER_SUCCESS,
+  C_PENDING_TO_CUSTOM_ORDER_FAIL ,
   CLEAR_ERRORS,
 } from "../constants/customOrderConstants";
 
@@ -160,6 +162,26 @@ export const updateCustomOrder = (id, customOrderData) => async (dispatch) => {
     });
   }
 };
+
+//User Pending Custom Orders 
+
+// export const getCustomerPendingCustomOrders = () => async (dispatch) => {
+//   try {
+//     dispatch({ type: CUSTOMER_PENDING_CUSTOM_ORDERS_REQUEST });
+
+//     const { data } = await axios.get(`/api/v1/user/pending`);
+
+//     dispatch({
+//       type: CUSTOMER_PENDING_CUSTOM_ORDERS_SUCCESS,
+//       payload: data.customOrders,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: CUSTOMER_PENDING_CUSTOM_ORDERS_FAIL,
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
 
 // Delete CustomOrder
 export const deleteCustomOrder = (id) => async (dispatch) => {
@@ -282,7 +304,7 @@ export const myCustomOrders = (userId) => async (dispatch) => {
   }
 };
 
-
+// CONFIRM CUSTOM ORDER
 
 export const confirmCustomOrder = (orderId) => async (dispatch) => {
   try {
@@ -302,6 +324,8 @@ export const confirmCustomOrder = (orderId) => async (dispatch) => {
   }
 };
 
+//DECLINE CUSTOM ORDER
+
 export const declineCustomOrder = (orderId) => async (dispatch) => {
   try {
     dispatch({ type: DECLINE_CUSTOM_ORDER_REQUEST });
@@ -319,6 +343,8 @@ export const declineCustomOrder = (orderId) => async (dispatch) => {
     });
   }
 };
+
+//CONFIRMED CUSTOM ORDERS
 
 export const getConfirmedCustomOrders = () => async (dispatch) => {
   try {
@@ -338,6 +364,9 @@ export const getConfirmedCustomOrders = () => async (dispatch) => {
     });
   }
 };
+
+//PENDING CUSTOM ORDERS --ADMIN
+
 export const getPendingCustomOrders = () => async (dispatch) => {
   try {
     dispatch({ type: PENDING_CUSTOM_ORDER_REQUEST });
@@ -466,6 +495,7 @@ export const myAssignedCustomOrders = () => async (dispatch) => {
   }
 };
 
+//UPDATE PROGRESS OF A CUSTOM ORDER
 
 export const updateProgress = (orderId, progress) => async (dispatch) => {
   try {
@@ -500,6 +530,25 @@ export const updateProgress = (orderId, progress) => async (dispatch) => {
   }
 };
 
+//USER PENDING CUSTOM ORDER
+
+export const myPendingCustomOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: C_PENDING_TO_CUSTOM_ORDER_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/user/pending`);
+    console.log('Fetched custom orders:', data.customOrders);
+    dispatch({
+      type: C_PENDING_TO_CUSTOM_ORDER_SUCCESS,
+      payload: data.customOrders,
+    });
+  } catch (error) {
+    dispatch({
+      type: C_PENDING_TO_CUSTOM_ORDER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {

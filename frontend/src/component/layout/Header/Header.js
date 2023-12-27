@@ -36,7 +36,7 @@ const Header = () => {
           <li><NavLink exact to="/services" activeClassName="active" onClick={handleMenuOptionClick}>Services</NavLink></li>
           <li><NavLink exact to="/projects" activeClassName="active" onClick={handleMenuOptionClick}>Portfolio</NavLink></li>
           <li><NavLink exact to="/products" activeClassName="active" onClick={handleMenuOptionClick}>Shop</NavLink></li>
-          <li><NavLink exact to="/custom-order" activeClassName="active" onClick={handleMenuOptionClick}>Custom Order</NavLink></li>
+          <li><NavLink exact to="/pricing" activeClassName="active" onClick={handleMenuOptionClick}>Pricing</NavLink></li>
           <li><NavLink exact to="/contact" activeClassName="active" onClick={handleMenuOptionClick}>Contact</NavLink></li>
           <li><NavLink exact to="/about" activeClassName="active" onClick={handleMenuOptionClick}>About</NavLink></li>
           <li><NavLink exact to="/login" activeClassName="active" onClick={handleMenuOptionClick}>Login/Register</NavLink></li>

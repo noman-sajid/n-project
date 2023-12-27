@@ -4,13 +4,16 @@ import slider1 from "../../../images/slider1.png";
 import slider2 from "../../../images/slider2.png";
 import slider3 from "../../../images/slider3.png";
 import Servicebox from './Servicebox.js';
+import OurServices from './Ourservices.js'
+import Software from './Software';
+import Dformat from './Dformats.js'
 function Services() {
   return (
     <Fragment>
       <div className='container-fluid m-0 c-main bg-dark'>
         <div className='services-main'>
           <div className='services-page-content'>
-            <h1 className='services-head'>Our Services</h1>
+            <h1 className='services-head'>Services We Provide</h1>
             <p className='services-pera'>Raa Digitizing is a one-stop-shop for embroidery digitizing, embroidery patches, vector art, sublimation, and color separation services. Our embroidery digitizing service covers a range of sub-services, including left chest logo digitizing, cap logo digitizing, jacket back digitizing, chain stitch digitizing, cross-stitch digitizing, and applique digitizing. Our embroidery patches service provides patches, badges, and applique badges. We also offer vector art and sublimation services, including color separation. Raa Digitizing provides high-quality services with fast turnaround times and competitive pricing. We have a team of experienced professionals who can help bring your designs to life and deliver exceptional results.</p>
           </div>
           <div class='services-images d-flex justify-content-center'>
@@ -31,6 +34,11 @@ function Services() {
         </div>
       </div>
       <Servicebox/>
+      <OurServices/>
+      <Software/>
+      <Dformat/>
+      
+      
     </Fragment>
   )
 }

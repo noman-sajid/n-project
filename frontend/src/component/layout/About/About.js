@@ -21,17 +21,12 @@ function About() {
            <div className="about-us">
             <div className="about-us-text">
             <h2>ABOUT OUR COMPANY</h2>
-            <p>At <span className="raa">RAA Digitizing</span>, we understand the importance of detail, precision, and creativity when it comes to embroidery digitizing/screen printing/digital printing. That is why we have a team of experienced and skilled professionals who work diligently to ensure that every design we create meets and exceeds our clients' expectations.
-
-Our company was founded on the principles of excellent customer service, fast turnaround times, and affordable pricing. We believe that our success lies in the satisfaction of our clients, and we are dedicated to making sure that each and every customer is 100% satisfied with our services.
-
-Our embroidery digitizing & vector art services are available to everyone, from small businesses to large corporations. We work with a wide range of industries, including fashion, sports, hospitality, and more. Whether you need a logo digitized for your baseball team's uniforms or a custom design for your fashion line, we've got you covered.</p>
-<p>At RAA Digitizing, we use state-of-the-art software and equipment to create designs that are clean, sharp, and precise. We take great pride in the quality of our work, and we strive to exceed our clients' expectations with every design we create.
-
-We believe that communication is key to a successful partnership, and that is why we work closely with our clients to ensure that every design we create meets their specific needs and requirements. We are always available to answer any questions or concerns that our clients may have, and we are dedicated to providing exceptional customer service every step of the way.
-
-Thank you for considering RAA Digitizing for your embroidery digitizing & printing needs. We look forward to working with you and helping you bring your designs to life!
-</p>
+            <p>Welcome to <span className="raa">RAA Digitizing</span> - Your Premier Destination for Premium Embroidery Digitizing & Vector Art Services. </p>
+            <p>At RAA Digitizing, we take immense pride in offering the world's best embroidery digitizing and vector art services. With over 15 years of experience in the industry, we have earned a stellar reputation for delivering top-notch quality and exceptional craftsmanship. 
+            </p>
+            <p>
+            Our team of highly skilled and experienced digitizers and designers are truly the backbone of our success. Their passion for their craft and unwavering attention to detail ensure that every design we create is a masterpiece in itself. With their expertise, we bring your ideas to life, transforming them into stunning embroidered or printed masterpieces. 
+            </p>
             </div>
             <div className="about-us-images">
             <img src={abimg1} alt='image' className="image"/>

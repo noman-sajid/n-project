@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+.main-ourservices-wrapper{
+    font-family: 'Karla', sans-serif;
+}
+.os-main-heading{
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+    background-color: #333131;
+    padding: 20px 0px;
+}
+.our-service-cards{
+    background-color: #cb851b;
+    padding: 50px 30px;
+}
+
+
+@media (max-width:600px) {
+    .our-service-cards{
+        padding: 50px 5px;
+    }
+    .os-main-heading{
+        font-size: 25px;
+    }
+}

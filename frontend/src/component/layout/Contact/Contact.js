@@ -66,7 +66,7 @@ const Contact = () => {
       </div>
       <div className="cotact-top-mail">
         <p><i class="fa-solid fa-envelope fa-2x"></i></p>
-        <p>raadigitizing@gmail.com</p>
+        <p>info.raadigitizing@gmail.com</p>
       </div>
       <div className="cotact-top-address">
       <p><i class="fa-sharp fa-solid fa-location-dot fa-2x"></i></p>

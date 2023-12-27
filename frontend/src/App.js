@@ -46,6 +46,7 @@ import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
+import Pricing from "./component/layout/Pricing/Pricingplan.js";
 import NotFound from "./component/layout/Not Found/NotFound";
 import Services from "./component/layout/Services/Services";
 import Service1 from "./component/layout/Services/Service1";
@@ -63,6 +64,10 @@ import ConfirmedCustomOrders from "./component/Admin/ConfirmedCustomOrders";
 import TeamUsers from "./component/Admin/TeamUsers";
 import AssignedCustomOrders from "./component/Admin/AssignedCustomOrder";
 import AssignedToCustomOrders from "./component/Admin/MyAssignedCustomOrders";
+// import userDash from "./component/cdash/Cdashboard.js"
+import MyPendingCustomOrder from "./component/Admin/MyPendingCustomOrders.js";
+import UserDashboard from "./component/cdash/Cdashboard.js"
+
 
 function App() {
 
@@ -75,13 +80,13 @@ function App() {
   
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  // const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
 
-    setStripeApiKey(data.stripeApiKey);
-  }
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
   
   useEffect(() => {
     WebFont.load({
@@ -92,7 +97,7 @@ function App() {
 
     store.dispatch(loadUser());
 
-    getStripeApiKey();
+    // getStripeApiKey();
   }, []);
 
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -104,16 +109,18 @@ function App() {
 
       {isAuthenticated && <UserOptions user={user} />}
 
-      {stripeApiKey && (
+      {/* {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
-      )}
+      )} */}
 
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/custom-order-details/:id" component={CustomOrderDetails} />
+        <Route exact path="/userdash" component={UserDashboard}/>
+        {/* <Route exact path="/user/pending" component={myPendingCustomOrders}/> */}
 
         <Route exact path="/products" component={Products}/>
         <Route path="/products/:keyword" component={Products} />
@@ -123,6 +130,8 @@ function App() {
         <Route exact path="/contact" component={Contact} />
 
         <Route exact path="/about" component={About} />
+
+        <Route exact path="/pricing" component={Pricing} />
 
         <Route exact path="/services" component={Services}/>
 
@@ -207,7 +216,14 @@ function App() {
         />
         <ProtectedRoute
           exact
-          path="/user/assigned-custom-orders"
+          path="/user/pending-custom-orders"
+          isAdmin={true}
+          isTeam={true}
+          component={MyPendingCustomOrder}
+        />
+        <ProtectedRoute
+          exact
+          path="/user/pending-custom-orders"
           isAdmin={true}
           isTeam={true}
           component={AssignedToCustomOrders}

@@ -49,6 +49,7 @@ const orderSchema = new mongoose.Schema({
       },
       product: {
         type: mongoose.Schema.ObjectId,
+        
         ref: "Product",
         required: true,
       },
@@ -68,6 +69,11 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+  },
+  isPaid: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
   paidAt: {
     type: Date,

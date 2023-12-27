@@ -44,7 +44,7 @@ app.use("/api/v1", product);
 app.use("/api/v1", customOrder);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
-app.use("/api/v1", payment);
+// app.use("/api/v1", payment);
 app.use("/api/v1", project);
 app.use("/api/cuorder",cuorder);
 
@@ -84,6 +84,7 @@ app.get("*", (req, res) => {
 // Middleware for Errors
 app.use(errorMiddleware);
 module.exports = app;
+
 
 
 //contact -form -submissions

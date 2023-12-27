@@ -178,7 +178,7 @@ export const orderDetailsReducer = (state = { order: {} }, action) => {
     case ORDER_DETAILS_FAIL:
       return {
         loading: false,
-        error: action.payload,
+        error: action.payload, 
       };
     case CLEAR_ERRORS:
       return {

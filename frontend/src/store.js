@@ -25,8 +25,10 @@ import {
   assignCustomOrderReducer,
   assignedCustomOrdersReducer,
   myAssignedCustomOrdersReducer,
-  updateProgressReducer
+  updateProgressReducer,
+  // customerPendingCustomOrdersReducer,
   // reviewReducer,
+  myPendingCustomOrdersReducer,
 } from "./reducers/customOrderReducer";
 
 import {
@@ -89,7 +91,8 @@ const reducer = combineReducers({
   assignCustomOrder:assignCustomOrderReducer,
   assignedCustomOrders : assignedCustomOrdersReducer,
   myAssignedCustomOrders : myAssignedCustomOrdersReducer,
-  updateProgress : updateProgressReducer
+  updateProgress : updateProgressReducer,
+  myPendingCustomOrders: myPendingCustomOrdersReducer,
 });
 
 let initialState = {

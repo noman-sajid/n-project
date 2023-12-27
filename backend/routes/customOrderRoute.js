@@ -17,7 +17,8 @@ const {
   assignCustomOrder,
   getAssignedCustomOrders,
   getCustomOrdersAssignedToUser,
-  updateProgress
+  updateProgress,
+  getCustomerPendingCustomOrders
   
 } = require("../controllers/customOrderController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
@@ -44,6 +45,14 @@ router
   .route("/reviews")
   .get(getCustomOrderReviews)
   .delete(isAuthenticatedUser, deleteReview);
+
+  // Customer Pending Orders
+
+  router.get(
+    "/user/pending", 
+    isAuthenticatedUser,
+    getCustomerPendingCustomOrders
+  )
 
   // Confirm Custom Order (For Admin)
 router.put(

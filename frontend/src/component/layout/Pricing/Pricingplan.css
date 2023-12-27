@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+.pricingplan-main-container{
+    background-color: #f5bf6d;
+    font-family: 'Karla', sans-serif;
+}
+.pricingplan-header{
+    background-color: #FFB03B;
+    padding: 150px 0px 50px 0px;
+    text-align: center;
+    color: rgb(51, 49, 49);
+}
+.pricingplan-header h1{
+    font-size: 50px;
+    font-weight: 500;
+    color: black;
+}
+.pricingplan-header p{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0rem 10rem;
+}
+
+.pricing-plans{
+    padding: 30px 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+.plan1{
+    width: 50%;
+    border: 2px solid black;
+}
+.plan2{
+    width: 50%;
+    border: 2px solid black;
+    /* margin-bottom: 110px; */
+}
+.plan1 h1{
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 40px;
+}
+.plan2 h1{
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 40px;
+}
+.plan1-content p{
+    font-size: 22px;
+    font-weight: 400;
+}
+.plan2-content p{
+    font-size: 22px;
+    font-weight: 400;
+}
+@media (max-width:1200px) {
+    .pricing-plans{
+        padding: 30px 100px;
+    }
+}
+@media (max-width:992px) {
+    .pricing-plans{
+        padding: 30px 50px;
+    }
+}
+@media (max-width:768px) {
+    .pricing-plans{
+        flex-direction: column;
+        padding: 30px;
+    }
+    .plan1{
+        width: 100%;
+    }
+    .plan2{
+        width: 100%;
+    }
+    .pricingplan-header p{
+        padding: 0rem 2rem;
+    }
+}
+@media (max-width:600px) {
+    .pricing-plans{
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+}

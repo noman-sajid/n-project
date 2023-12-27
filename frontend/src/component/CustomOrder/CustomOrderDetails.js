@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
 import "./CustomOrderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,20 +6,11 @@ import {
   getCustomOrderDetails,
   newReview,
 } from "../../actions/customOrderAction";
-import ReviewCard from "./ReviewCard.js";
-import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
-import { addItemsToCart } from "../../actions/cartAction";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-} from "@material-ui/core";
-import { Rating } from "@material-ui/lab";
-import { NEW_REVIEW_RESET } from "../../constants/customOrderConstants";
+
+
+
 
 const CustomOrderDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -30,56 +20,7 @@ const CustomOrderDetails = ({ match }) => {
     (state) => state.customOrderDetails
   );
 
-  const { success, error: reviewError } = useSelector(
-    (state) => state.newReview
-  );
 
-  const options = {
-    size: "large",
-    value: customOrder.ratings,
-    readOnly: true,
-    precision: 0.5,
-  };
-
-  const [quantity, setQuantity] = useState(1);
-  const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
-
-  const increaseQuantity = () => {
-    if (customOrder.Stock <= quantity) return;
-
-    const qty = quantity + 1;
-    setQuantity(qty);
-  };
-
-  const decreaseQuantity = () => {
-    if (1 >= quantity) return;
-
-    const qty = quantity - 1;
-    setQuantity(qty);
-  };
-
-  const addToCartHandler = () => {
-    dispatch(addItemsToCart(match.params.id, quantity));
-    alert.success("Item Added To Cart");
-  };
-
-  const submitReviewToggle = () => {
-    open ? setOpen(false) : setOpen(true);
-  };
-
-  const reviewSubmitHandler = () => {
-    const myForm = new FormData();
-
-    myForm.set("rating", rating);
-    myForm.set("comment", comment);
-    myForm.set("customOrderId", match.params.id);
-
-    dispatch(newReview(myForm));
-
-    setOpen(false);
-  };
 
   useEffect(() => {
     if (error) {
@@ -87,128 +28,122 @@ const CustomOrderDetails = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    if (reviewError) {
-      alert.error(reviewError);
-      dispatch(clearErrors());
-    }
-
-    if (success) {
-      alert.success("Review Submitted Successfully");
-      dispatch({ type: NEW_REVIEW_RESET });
-    }
+  
     dispatch(getCustomOrderDetails(match.params.id));
-  }, [dispatch, match.params.id, error, alert, reviewError, success]);
+  }, [dispatch, match.params.id, error, alert,]);
 
   return (
-    <Fragment>
-      {loading ? (
-        <Loader />
-      ) : (
-        <Fragment>
-          <MetaData title={`${customOrder.name} -- ECOMMERCE`} />
-          <div className="CustomOrderDetails">
-            <div>
-              <Carousel>
+    
+      <>
+      <div className='container-fluid'>
+      <div className="custom-order-details-main">
+      <h1 className='codetails-heading'>Custom Order Details</h1>
+      <div className='codetails-section'>
+          <div className='single-detail sd-one'>
+              <p className='single-detail-heading'>Name</p>
+              <p className='single-detail-text'>{customOrder.name}</p>
+          </div>
+          <div className='single-detail sd-two'>
+              <p className='single-detail-heading'>Email Address</p>
+              <p className='single-detail-text w-75'>{customOrder.email}</p>
+          </div>
+          <div className='single-detail sd-one 0'>
+              <p className='single-detail-heading'>Phone Number</p>
+              <p className='single-detail-text '>{customOrder.phone}</p>
+          </div>
+          <div className='single-detail sd-two 0'>
+              <p className='single-detail-heading'>Logo Name</p>
+              <p className='single-detail-text '>{customOrder.logoName}</p>
+          </div>
+          <div className='single-detail sd-one 0'>
+              <p className='single-detail-heading'>Required Format</p>
+              <p className='single-detail-text '>{customOrder.format}</p>
+          </div>
+          <div className='single-detail sd-two'>
+              <p className='single-detail-heading'>Software</p>
+              <p className='single-detail-text '>{customOrder.software}</p>
+          </div>
+          <div className='single-detail sd-one'>
+              <p className='single-detail-heading'>Dimensions</p>
+              <p className='single-detail-text '>{customOrder.dimensions}</p>
+          </div>
+          <div className='single-detail sd-two'>
+              <p className='single-detail-heading'>Required Color</p>
+              <p className='single-detail-text '>{customOrder.requiredColors}</p>
+          </div>
+          <div className='single-detail sd-one'>
+              <p className='single-detail-heading'>Number of Colors</p>
+              <p className='single-detail-text '>{customOrder.numberOfColors}</p>
+          </div>
+          <div className='single-detail sd-two'>
+              <p className='single-detail-heading'>Center Point</p>
+              <p className='single-detail-text'>{customOrder.centerPoint}</p>
+          </div>
+          <div className='single-detail sd-one w-100'>
+              <p className='single-detail-heading'>Comments</p>
+              <p className='single-detail-text w-75'>{customOrder.remarks}</p>
+          </div>
+          <div className='single-detail sd-two w-100'>
+              <p className='single-detail-heading'>Remarks</p>
+              <p className='single-detail-text w-75'>{customOrder.description}</p>
+          </div>
+          <div className='single-detail sd-one w-100 image-section'>
+              <p className='single-detail-heading'>Art Work provided:</p>
+              <div className='single-detail-image w-75'>
+              
                 {customOrder.images &&
-                  customOrder.images.map((item, i) => (
+                  customOrder.images.map((item) => (
                     <img
                       className="CarouselImage"
-                      key={i}
+                     
                       src={item.url}
-                      alt={`${i} Slide`}
+                      alt={`Slide`}
                     />
                   ))}
-              </Carousel>
-            </div>
+            
 
-            <div>
-              <div className="detailsBlock-1">
-                <h2>{customOrder.name}</h2>
-                <p>CustomOrder # {customOrder._id}</p>
-              </div>
-              <div className="detailsBlock-2">
-                <Rating {...options} />
-                <span className="detailsBlock-2-span">
-                  {" "}
-                  ({customOrder.numOfReviews} Reviews)
-                </span>
-              </div>
-              <div className="detailsBlock-3">
-                <h1>{`$${customOrder.price}`}</h1>
-                <div className="detailsBlock-3-1">
-                  <button
-                    // disabled={customOrder.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
 
-                <p>
-                  Status:
-                  <b> Available </b>
-                  {/* <b className={customOrder.Stock < 1 ? "redColor" : "greenColor"}>
-                    {customOrder.Stock < 1 ? "Not Available" : "Available"}
-                  </b> */}
-                </p> 
-              </div>
+            {/* {customOrder.images &&
+  customOrder.images.map((item, index) => (
+    <div key={index} className="image-container">
+      <img className="CarouselImage" src={item.url} alt={`Slide`} />
+      <a
+        href={item.url}
+        download={`artwork_${index}.jpg`} // You can customize the filename and extension here
+        className="download-button"
+        onClick={(e) => {
+          e.preventDefault();
+          fetch(item.url)
+            .then((response) => response.blob())
+            .then((blob) => {
+              const url = window.URL.createObjectURL(new Blob([blob]));
+              const link = document.createElement("a");
+              link.href = url;
+              link.setAttribute("download", `artwork_${index}.jpg`);
+              document.body.appendChild(link);
+              link.click();
+              link.parentNode.removeChild(link);
+            });
+        }}
+      >
+        Download
+      </a>
+    </div>
+  ))} */}
 
-              <div className="detailsBlock-4">
-                Description : <p>{customOrder.description}</p>
-              </div>
 
-              <button onClick={submitReviewToggle} className="submitReview">
-                Submit Review
-              </button>
-            </div>
+
+              </div>
           </div>
-
-          <h3 className="reviewsHeading">REVIEWS</h3>
-
-          <Dialog
-            aria-labelledby="simple-dialog-title"
-            open={open}
-            onClose={submitReviewToggle}
-          >
-            <DialogTitle>Submit Review</DialogTitle>
-            <DialogContent className="submitDialog">
-              <Rating
-                onChange={(e) => setRating(e.target.value)}
-                value={rating}
-                size="large"
-              />
-
-              <textarea
-                className="submitDialogTextArea"
-                cols="30"
-                rows="5"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              ></textarea>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={submitReviewToggle} color="secondary">
-                Cancel
-              </Button>
-              <Button onClick={reviewSubmitHandler} color="primary">
-                Submit
-              </Button>
-            </DialogActions>
-          </Dialog>
-
-          {customOrder.reviews && customOrder.reviews[0] ? (
-            <div className="reviews">
-              {customOrder.reviews &&
-                customOrder.reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review} />
-                ))}
-            </div>
-          ) : (
-            <p className="noReviews">No Reviews Yet</p>
-          )}
-        </Fragment>
-      )}
-    </Fragment>
+      </div>
+      </div> 
+      </div>
+  
+  
+  
+  
+ 
+      </>
   );
 };
 

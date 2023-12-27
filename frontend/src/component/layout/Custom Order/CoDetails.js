@@ -71,7 +71,7 @@ function CoDetails() {
 
 
 {/* <!-- Modal --> */}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{/* <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog b_modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -85,7 +85,7 @@ function CoDetails() {
       </div>
     </div>
   </div>
-</div>
+</div> */}
     </>
   )
 }

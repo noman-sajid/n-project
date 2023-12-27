@@ -51,8 +51,8 @@ const NewCustomOrder = ({ history }) => {
     }
 
     if (success) {
-      alert.success("CustomOrder Created Successfully");
-      history.push("/");
+      alert.success("Order Placed Successfully");
+      history.push("/userdash");
       dispatch({ type: NEW_CUSTOM_ORDER_RESET });
     }
   }, [dispatch, alert, error, history, success]);

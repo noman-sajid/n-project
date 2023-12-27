@@ -6,9 +6,9 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 // Create new Order
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   const {
-    shippingInfo,
     orderItems,
-    paymentInfo,
+    shippingAddress,
+    paymentMethod,
     itemsPrice,
     taxPrice,
     shippingPrice,
@@ -16,15 +16,14 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   } = req.body;
 
   const order = await Order.create({
-    shippingInfo,
     orderItems,
-    paymentInfo,
+    user: req.user._id,
+    shippingAddress,
+    paymentMethod,
     itemsPrice,
     taxPrice,
     shippingPrice,
     totalPrice,
-    // paidAt: Date.now(),
-    user: req.user._id,
   });
 
   res.status(201).json({
@@ -33,6 +32,28 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
+exports.updateOrderToPaid = catchAsyncErrors(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  if (order) {
+    order.isPaid = true
+    order.paidAt = Date.now()
+    order.paymentResult = {
+      id: req.body.id,
+      status: req.body.status,
+      update_time: req.body.update_time,
+      email_address: req.body.payer.email_address,
+    }
+
+    const updatedOrder = await order.save()
+
+    res.json(updatedOrder)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
 // get Single Order
 exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id).populate(

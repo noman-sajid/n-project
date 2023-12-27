@@ -1,0 +1,182 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+.home-section-1-main{
+    font-family: 'Karla', sans-serif;
+}
+
+/* HOME SECTION 1 CSS */
+.home-section-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 100px;
+    gap: 20px;
+}
+.home-section-1-heading{
+    font-size: 40px;
+    font-weight: bold;
+    color: #FFB03B;
+}
+.home-section-1-subject > p{
+       font-size: 22px;
+       font-weight: 300;
+       color: white;
+}
+.home-section-1-image{
+    width: 25%;
+}
+.home-section-1-content{
+    width: 75%;
+}
+.home-section-1-image img{
+    width: 80%;
+    transform: rotate(45deg);
+    border-radius: 10px;
+    border: 2px solid #FFB03B;
+    box-shadow: #FFB03B 0px 4px 12px;
+}
+@media (max-width:1200px) {
+    .home-section-1-image{
+        width: 30%;
+    }
+    .home-section-1-content{
+        width: 70%;
+    }
+}
+@media (max-width:992px){
+    .home-section-1{
+        flex-direction: column;
+        padding: 100px 30px 30px 30px ;
+    }
+    .home-section-1-image{
+        margin-bottom: 30px;
+    }
+    .home-section-1-content{
+        width: 100%;
+    }
+    .home-section-1-subject > p{
+        font-size: 18px;
+    }
+    .home-section-1-heading{
+        font-size: 30px;
+    }
+}
+
+
+
+/* Home 2 CSS */
+.home-section-2-main{
+    font-family: 'Karla', sans-serif;
+}
+.home-section-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 90px;
+    gap: 20px;
+    background-color: #FAF9F6;
+}
+.home-section-2-content{
+    width: 75%;
+}
+.home-section-2-img{
+    width: 25%;
+}
+.home-section-2-img img{
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 2px solid black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.home-section-2-heading{
+    font-size: 40px;
+   font-weight: bold;
+   color: #FFB03B;
+}
+.home-section-2-subject p{
+    font-size: 22px;
+    font-weight: 300;
+}
+@media (max-width:1200px) {
+    .home-section-2-img{
+        width: 30%;
+    }
+    .home-section-2-content{
+        width: 70%;
+    }
+}
+@media (max-width:992px){
+    .home-section-2{
+        flex-direction: column;
+        padding: 30px;
+    }
+    .home-section-2-img{
+        margin-bottom: 30px;
+        width: 100%;
+        order: 1;
+        text-align: center;
+    }
+    .home-section-2-content{
+        width: 100%;
+        order: 2;
+    }
+    .home-section-2-subject > p{
+        font-size: 18px;
+    }
+    .home-section-2-heading{
+        font-size: 30px;
+    }
+    .home-section-2-img img{
+        width: 300px;
+        height: 300px;
+    }
+}
+@media (max-width:992px){
+    .home-section-2-img img{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+
+/* Home 3 CSS */
+.home-section-3-main{
+    font-family: 'Karla', sans-serif;
+    background-color: #dc9531;
+}
+
+.home-section-3{
+    width: 100%;
+    padding: 50px 200px;
+    color: black;
+    text-align: center;
+    
+    
+}
+.home-section-3-heading{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+}
+.home-section-3-subject > p{
+       font-size: 22px;
+       font-weight: 300;
+}
+@media (max-width:992px){
+    .home-section-3{
+        padding: 30px ;
+    }
+    .home-section-3-subject > p{
+        font-size: 18px;
+    }
+    .home-section-3-heading{
+        font-size: 30px;
+    }
+}
+
+
+
